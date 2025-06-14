@@ -11,7 +11,9 @@
     {
       "src": "backend/src/index.ts",
       "use": "@vercel/node",
-      "config": {}
+      "config": {
+        "includeFiles": ["backend/src/utils/**"]
+      }
     }
   ],
   "routes": [
