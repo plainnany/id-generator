@@ -116,7 +116,12 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 })
 
 // 启动服务器
-app.listen(PORT, () => {
-  console.log(`🚀 服务器运行在端口 ${PORT}`)
-  console.log(`📚 健康检查: http://localhost:${PORT}/api/health`)
-}) 
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 服务器运行在端口 ${PORT}`)
+    console.log(`📚 健康检查: http://localhost:${PORT}/api/health`)
+  })
+}
+
+// 导出 app 实例供 Vercel 使用
+export default app 
