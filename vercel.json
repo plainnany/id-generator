@@ -10,10 +10,7 @@
     },
     {
       "src": "backend/src/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["backend/src/utils/**"]
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
