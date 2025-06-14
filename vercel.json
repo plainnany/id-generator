@@ -9,17 +9,14 @@
       }
     },
     {
-      "src": "backend/package.json",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "npm run build"
-      }
+      "src": "backend/src/index.ts",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/dist/index.js"
+      "dest": "/backend/dist/index.ts"
     },
     {
       "handle": "filesystem"
