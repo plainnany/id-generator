@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run vercel-build",
+  "buildCommand": "pnpm run build",
   "outputDirectory": "frontend/dist",
   "functions": {
     "backend/src/index.ts": {
