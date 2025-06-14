@@ -11,7 +11,8 @@
     "build:frontend": "pnpm --filter frontend build",
     "build:backend": "pnpm --filter backend build",
     "start": "pnpm --filter backend start",
-    "install:all": "pnpm install"
+    "install:all": "pnpm install",
+    "vercel-build": "pnpm --filter frontend build"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
