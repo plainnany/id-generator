@@ -28,7 +28,7 @@
       "dest": "/frontend/dist/index.html"
     }
   ],
-   "rewrites": [
+  "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": "/backend/dist/index.js"
