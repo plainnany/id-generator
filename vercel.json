@@ -32,7 +32,7 @@
     {
       "source": "/api/(.*)",
       "destination": "/backend/dist/index.js"
-    }
+    },
     {
       "source": "/(.*)",
       "destination": "/frontend/dist/index.html"
