@@ -9,7 +9,7 @@ const bankBins: Record<Bank, string[]> = {
   cmb: ['622575', '622576', '622577', '622578', '622579', '622580', '622581', '622582', '622583', '622584']
 };
 
-export function generateCreditCard(bank: Bank): string {
+export function generateCreditCode(bank: Bank): string {
   // 获取对应银行的BIN号
   const bins = bankBins[bank];
   if (!bins) {

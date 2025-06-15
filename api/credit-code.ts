@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generateCreditCard } from './utils/credit-card';
+import { generateCreditCode } from './utils/credit-code';
 
 export default async function handler(
   req: VercelRequest,
@@ -22,7 +22,7 @@ export default async function handler(
     }
 
     // 生成信用卡号
-    const creditCard = generateCreditCard(bank);
+    const creditCard = generateCreditCode(bank);
 
     return res.status(200).json({ creditCard });
   } catch (error) {
