@@ -9,7 +9,7 @@
       }
     },
     {
-      "src": "backend/vercel-build.js",
+      "src": "backend/src/index.ts",
       "use": "@vercel/node",
       "config": {
         "includeFiles": [
