@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 
 module.exports = async () => {
   // 1. 安装依赖
-  execSync('npm install', { stdio: 'inherit' });
+  execSync('pnpm install', { stdio: 'inherit' });
   
   // 2. 编译 TypeScript
   execSync('npx tsc', { stdio: 'inherit' });
