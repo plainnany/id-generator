@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Copy, RefreshCw } from 'lucide-react'
-import { generatePhoneAPI } from '../services/api'
+import { generatePhone } from '../utils/generators'
 import { useToastContext } from '../context/ToastContext'
 import { useThrottle } from '../hooks/useDebounce'
 
@@ -25,32 +25,27 @@ const PhoneGenerator: React.FC = () => {
     telecom: ['133', '149', '153', '173', '174', '177', '180', '181', '189', '191', '193', '199'],
   }
 
-  const handleGenerateInternal = async () => {
+  const handleGenerateInternal = () => {
     if (isGenerating) {
       return
     }
     
     setIsGenerating(true)
     try {
-      const response = await generatePhoneAPI({
-        operator,
-        count
-      })
-      
-      if (response.success) {
-        if (count === 1) {
-          setResult(response.data)
-          setResults([])
-        } else {
-          setResults(response.data)
-          setResult('')
-        }
+      if (count === 1) {
+        const phone = generatePhone(operator)
+        setResult(phone)
+        setResults([])
       } else {
-        error('生成失败：' + (response.error || '未知错误'))
+        const newResults = Array.from({ length: Math.min(count, 100) }, () => 
+          generatePhone(operator)
+        )
+        setResults(newResults)
+        setResult('')
       }
     } catch (err) {
       console.error('生成失败:', err)
-      error('网络请求失败，请检查后端服务是否正常')
+      error('生成失败，请检查输入参数')
     } finally {
       setIsGenerating(false)
     }

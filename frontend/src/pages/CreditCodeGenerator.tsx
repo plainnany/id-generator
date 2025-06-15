@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Copy, RefreshCw } from 'lucide-react'
-import { generateCreditCodeAPI } from '../services/api'
+import { generateCreditCode } from '../utils/generators'
 import { useToastContext } from '../context/ToastContext'
 import { useThrottle } from '../hooks/useDebounce'
 
@@ -21,32 +21,27 @@ const CreditCodeGenerator: React.FC = () => {
     { value: '9', label: '其他' },
   ]
 
-  const handleGenerateInternal = async () => {
+  const handleGenerateInternal = () => {
     if (isGenerating) {
       return
     }
     
     setIsGenerating(true)
     try {
-      const response = await generateCreditCodeAPI({
-        orgType,
-        count
-      })
-      
-      if (response.success) {
-        if (count === 1) {
-          setResult(response.data)
-          setResults([])
-        } else {
-          setResults(response.data)
-          setResult('')
-        }
+      if (count === 1) {
+        const code = generateCreditCode(orgType)
+        setResult(code)
+        setResults([])
       } else {
-        error('生成失败：' + (response.error || '未知错误'))
+        const newResults = Array.from({ length: Math.min(count, 100) }, () => 
+          generateCreditCode(orgType)
+        )
+        setResults(newResults)
+        setResult('')
       }
     } catch (err) {
       console.error('生成失败:', err)
-      error('网络请求失败，请检查后端服务是否正常')
+      error('生成失败，请检查输入参数')
     } finally {
       setIsGenerating(false)
     }
