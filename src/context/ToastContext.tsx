@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode } from 'react'
-import { useToast, ToastMessage } from '../hooks/useToast'
+import { useToast } from '../hooks/useToast'
 import ToastContainer from '../components/ToastContainer'
 
 interface ToastContextType {

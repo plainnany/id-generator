@@ -68,7 +68,7 @@ const cityCodes: Record<string, Record<string, string>> = {
 };
 
 export function generateIdCard(params: IdCardParams): string {
-  const { province, city, district, gender, birthDate } = params;
+  const { province, city, gender, birthDate } = params;
 
   // 获取省份编码
   const provinceCode = provinceCodes[province];
