@@ -17,6 +17,10 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/index.html"
     }
   ]
 }
