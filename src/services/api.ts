@@ -36,7 +36,7 @@ export interface IdCardParams {
 }
 
 export const generateIdCardAPI = async (params: IdCardParams = {}): Promise<ApiResponse> => {
-  const response = await api.post('/id-card', params)
+  const response = await api.post('/id-card.ts', params)
   return response.data
 }
 
@@ -47,7 +47,7 @@ export interface PhoneParams {
 }
 
 export const generatePhoneAPI = async (params: PhoneParams = {}): Promise<ApiResponse> => {
-  const response = await api.post('/phone', params)
+  const response = await api.post('/phone.ts', params)
   return response.data
 }
 
@@ -58,7 +58,7 @@ export interface CreditCodeParams {
 }
 
 export const generateCreditCodeAPI = async (params: CreditCodeParams = {}): Promise<ApiResponse> => {
-  const response = await api.post('/credit-code', params)
+  const response = await api.post('/credit-code.ts', params)
   return response.data
 }
 

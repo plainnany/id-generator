@@ -1,38 +1,33 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generateIdCard } from './utils/id-card';
+import { VercelRequest, VercelResponse } from '@vercel/node'
+import { generateIdCard } from './utils/index.ts'
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   // 只允许 POST 请求
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' })
   }
 
   try {
-    const { province, city, district, gender, birthDate } = req.body;
+    const { region, minAge, gender, maxAge } = req.body
 
     // 验证必填参数
-    if (!province || !city || !district || !gender || !birthDate) {
+    if (!region || !minAge || !gender || !maxAge) {
       return res.status(400).json({
         error: 'Missing required parameters',
-        required: ['province', 'city', 'district', 'gender', 'birthDate']
-      });
+      })
     }
 
     // 生成身份证号
     const idCard = generateIdCard({
-      province,
-      city,
-      district,
+      region,
+      minAge,
       gender,
-      birthDate
-    });
+      maxAge,
+    })
 
-    return res.status(200).json({ idCard });
+    return res.status(200).json({ data: idCard, success: true })
   } catch (error) {
-    console.error('Error generating ID card:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    console.error('Error generating ID card:', error)
+    return res.status(500).json({ error: 'Internal server error' })
   }
-} 
+}
