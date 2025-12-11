@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generatePhone } from './utils/index.ts';
+import { generatePhone } from './utils/index';
 
 // API参数类型定义
 interface PhoneRequest {
