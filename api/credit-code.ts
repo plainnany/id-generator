@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generateCreditCode } from './utils/index';
+import { generateCreditCode } from './utils/index.js';
 
 // API参数类型定义
 interface CreditCodeRequest {

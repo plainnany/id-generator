@@ -1,6 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { generateIdCard } from './utils/index'
-
+import { generateIdCard } from './utils/index.js'
 // API参数类型定义
 interface IdCardRequest {
   region?: string;
